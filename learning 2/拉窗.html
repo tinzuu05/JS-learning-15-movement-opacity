@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>pull the small window</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script>
+		window.onload=function()
+		{
+			var oDiv=document.getElementById('div1');
+
+			oDiv.onmouseover=function()
+			{
+				startMove(0);
+			}
+
+			oDiv.onmouseout=function()
+			{
+				startMove(-150);
+			}
+		}
+
+		var timer=null;
+
+		function startMove(iTarget)
+		{
+			var oDiv=document.getElementById('div1');
+
+			clearInterval(timer);
+			timer=setInterval(function(){
+				var speed=0;
+
+				if(oDiv.offsetLeft>iTarget)
+				{
+					speed=-10;
+				}
+				else
+				{
+					speed=10;
+				}
+
+
+				if(oDiv.offsetLeft==iTarget)
+				{
+					clearInterval(timer)
+				}
+				else
+				{
+					oDiv.style.left=oDiv.offsetLeft+speed+'px';
+				}
+			}, 30);
+		}
+	</script>
+</head>
+<body>
+	<div id="div1" class="div1">
+		<span class="div1span">share</span>
+	</div>
+</body>
+</html> 
